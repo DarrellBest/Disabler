@@ -3,3 +3,6 @@ main: com.angelcraftonomy.disabler.main.MainDriver
 version: 1.0
 author: UsuriousAngel
 commands: 
+  disabler:
+    description: core command for disabler
+    aliases: [di]
