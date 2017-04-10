@@ -7,7 +7,7 @@ public interface CommandInterface {
 
 	public void cleanup();
 
-	public void sendNoPermMessage();
+	public void setPermission(String permission);
 
 	public String getPermission();
 }

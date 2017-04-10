@@ -4,10 +4,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.angelcraftonomy.disabler.extenders.CommandExtender;
-import com.angelcraftonomy.disabler.interfaces.CommandInterface;
 import com.angelcraftonomy.disabler.main.MainDriver;
 
-public class AuthorCommand extends CommandExtender implements CommandInterface {
+public class AuthorCommand extends CommandExtender {
 
 	private String permission;
 
@@ -15,14 +14,17 @@ public class AuthorCommand extends CommandExtender implements CommandInterface {
 		super(plugin, sender, command, label, args);
 	}
 
+	@Override
 	public void initialize() {
 		permission = "disabler.command.author";
 	}
 
+	@Override
 	public void run() {
 		sendMessage(" Created and designed by UsuriousAngel.");
 	}
 
+	@Override
 	public void cleanup() {
 		// TODO Auto-generated method stub
 	}
@@ -32,6 +34,7 @@ public class AuthorCommand extends CommandExtender implements CommandInterface {
 		super.sendNoPermMessage();
 	}
 
+	@Override
 	public String getPermission() {
 		return this.permission;
 	}

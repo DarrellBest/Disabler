@@ -8,6 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.angelcraftonomy.disabler.interfaces.CommandInterface;
 import com.angelcraftonomy.disabler.main.MainDriver;
 
 import net.md_5.bungee.api.ChatColor;
@@ -16,13 +17,14 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 // To be extended!
 
 @SuppressWarnings("unused")
-public class CommandExtender {
+public class CommandExtender implements CommandInterface {
 
 	private MainDriver plugin;
 	protected CommandSender sender;
 	private Command command;
 	private String label;
 	private String[] args;
+	private String permission;
 
 	public CommandExtender(MainDriver plugin, CommandSender sender, Command command, String label, String[] args) {
 		this.plugin = plugin;
@@ -122,6 +124,29 @@ public class CommandExtender {
 
 	public String[] getArgs() {
 		return args;
+	}
+
+	public void initialize() {
+		// to be overridden
+
+	}
+
+	public void run() {
+		// to be overridden
+
+	}
+
+	public void cleanup() {
+		// to be overridden
+
+	}
+
+	public String getPermission() {
+		return this.permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
 	}
 
 }

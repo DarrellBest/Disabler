@@ -31,7 +31,6 @@ public class MainCommandExecutor implements CommandExecutor {
 			}
 		}
 
-		// if no command detected, return false
 		return false;
 	}
 }
