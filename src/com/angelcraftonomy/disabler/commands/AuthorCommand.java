@@ -19,7 +19,7 @@ public class AuthorCommand extends CommandExtender {
 
 	@Override
 	public void run() {
-		sendMessage(" Created and designed by UsuriousAngel.");
+		sendMessage("Created and designed by UsuriousAngel.");
 	}
 
 	@Override

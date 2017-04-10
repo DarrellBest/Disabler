@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import com.angelcraftonomy.disabler.commands.AuthorCommand;
+import com.angelcraftonomy.disabler.commands.HelpCommand;
 
 public class MainCommandExecutor implements CommandExecutor {
 	public MainDriver plugin;
@@ -13,24 +14,36 @@ public class MainCommandExecutor implements CommandExecutor {
 		this.plugin = plugin;
 	}
 
-	public boolean onCommand(CommandSender arg0, Command arg1, String arg2, String[] arg3) {
+	@Override
+	public boolean onCommand(CommandSender sender, Command command, String lable, String[] args) {
 
-		if (arg0.getName().equalsIgnoreCase("disabler") || arg0.getName().equalsIgnoreCase("di")) {
-
-			// Author command
-			if (arg3.length > 0 && arg3[0].toLowerCase().equals("author")) {
-				AuthorCommand author = new AuthorCommand(plugin, arg0, arg1, arg2, arg3);
-				if (arg0.hasPermission("disabler.command.author")) {
-					author.initialize();
-					author.run();
-					author.cleanup();
-				} else {
-					author.sendNoPermMessage();
-				}
-				return true;
-			}
+		/**************************************************************************************/
+		// Author Command
+		if (args.length > 0 && args[0].toLowerCase().equals("author")) {
+			AuthorCommand author = new AuthorCommand(plugin, sender, command, lable, args);
+			// if arg0.hasPermission(author.getPermission())
+			author.initialize();
+			author.run();
+			author.cleanup();
+			return true;
 		}
 
-		return false;
+		/**************************************************************************************/
+		// Help Command
+		if (args[0].toLowerCase().equals("help")) {
+			HelpCommand help = new HelpCommand(plugin, sender, command, lable, args);
+			help.initialize();
+			help.run();
+			help.cleanup();
+			return true;
+		}
+
+		/**************************************************************************************/
+		// if no command is detected, then run the help command
+		HelpCommand help = new HelpCommand(plugin, sender, command, lable, args);
+		help.initialize();
+		help.run();
+		help.cleanup();
+		return true;
 	}
 }
