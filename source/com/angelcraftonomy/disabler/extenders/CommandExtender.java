@@ -14,7 +14,7 @@ import com.angelcraftonomy.disabler.main.MainDriver;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 
-// To be extended!
+// To be extended! 
 
 @SuppressWarnings("unused")
 public class CommandExtender implements CommandInterface {

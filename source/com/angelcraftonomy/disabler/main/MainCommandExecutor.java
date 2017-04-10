@@ -13,14 +13,14 @@ public class MainCommandExecutor implements CommandExecutor {
 		this.plugin = plugin;
 	}
 
-	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+	public boolean onCommand(CommandSender arg0, Command arg1, String arg2, String[] arg3) {
 
-		if (command.getName().equalsIgnoreCase("disabler") || command.getName().equalsIgnoreCase("di")) {
+		if (arg0.getName().equalsIgnoreCase("disabler") || arg0.getName().equalsIgnoreCase("di")) {
 
 			// Author command
-			if (args.length > 0 && args[0].toLowerCase().equals("author")) {
-				AuthorCommand author = new AuthorCommand(plugin, sender, command, label, args);
-				if (sender.hasPermission("disabler.command.author")) {
+			if (arg3.length > 0 && arg3[0].toLowerCase().equals("author")) {
+				AuthorCommand author = new AuthorCommand(plugin, arg0, arg1, arg2, arg3);
+				if (arg0.hasPermission("disabler.command.author")) {
 					author.initialize();
 					author.run();
 					author.cleanup();
