@@ -1,0 +1,15 @@
+name: Disabler
+main: com.angelcraftonomy.disabler.main.MainDriver
+version: 1.0
+author: UsuriousAngel
+commands:
+   Disabler:
+      description: Disabler root command
+      aliases: [di]
+permissions:
+   disabler.command.author:
+      description: Allows a player to see the author
+   disabler.all:
+      description: Gives access to all disabler commands/functions.
+      children:
+         disabler.command.author: true
