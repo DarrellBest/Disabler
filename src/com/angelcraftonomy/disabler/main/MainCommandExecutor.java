@@ -39,6 +39,9 @@ public class MainCommandExecutor implements CommandExecutor {
 		}
 
 		/**************************************************************************************/
+		//
+
+		/**************************************************************************************/
 		// if no command is detected, then run the help command
 		HelpCommand help = new HelpCommand(plugin, sender, command, lable, args);
 		help.initialize();
