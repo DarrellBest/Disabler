@@ -8,7 +8,7 @@ import com.angelcraftonomy.disabler.main.MainDriver;
 
 public class ReloadCommand extends CommandExtender {
 
-	MainDriver plugin;
+	private MainDriver plugin;
 
 	public ReloadCommand(MainDriver plugin, CommandSender sender, Command command, String label, String[] args) {
 		super(plugin, sender, command, label, args);
