@@ -22,20 +22,19 @@ public class MainListener implements Listener {
 	public MainListener(MainDriver plugin) {
 		super();
 		this.plugin = plugin;
-		// list = plugin.getConfig().getStringList("disallow");
 	}
 
 	@EventHandler
 	public void craftItem(PrepareItemCraftEvent e) {
+
 		String itemName = e.getRecipe().getResult().getData().getItemType().name();
+
 		if (plugin.getConfig().getBoolean("disallow." + itemName)) {
 			e.getInventory().setResult(new ItemStack(Material.AIR));
-			for (HumanEntity he : e.getViewers()) {
-				if (he instanceof Player) {
+
+			for (HumanEntity he : e.getViewers())
+				if (he instanceof Player)
 					((Player) he).sendMessage(ChatColor.RED + "You cannot craft this!");
-					// e.getViewers().get(0).sendMessage(itemName);
-				}
-			}
 		}
 	}
 

@@ -22,7 +22,7 @@ public class HelpCommand extends CommandExtender {
 
 	@Override
 	public void initialize() {
-		messages = new ArrayList<String>();
+		messages = new ArrayList<>();
 		colorOne = getRandomColor();
 	}
 
@@ -32,6 +32,9 @@ public class HelpCommand extends CommandExtender {
 		messages.add(colorOne + "*** Disabler v1.0 Created and Designed by UsuriousAngel ***\n");
 		messages.add(" /" + getCommand().getName() + " author : " + colorOne + "Displays the author");
 		messages.add(" /" + getCommand().getName() + " help : " + colorOne + "Shows the commands");
+		messages.add(" /" + getCommand().getName() + " reload: " + colorOne + "Reloads the config\n");
+		messages.add(colorOne + " You can disable crafting for specific items");
+		messages.add(colorOne + " in config.yml. Set to true to disable!");
 		messages.add("-----------------------------------------------------");
 		sendMessage(messages);
 	}

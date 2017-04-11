@@ -51,7 +51,7 @@ public class ConfigBuilder {
 				config.addDefault("disallow.BEETROOT_SEEDS", false);
 				config.addDefault("disallow.BEETROOT_SOUP", false);
 				config.addDefault("disallow.BIRCH_DOOR", false);
-				config.addDefault("disallowv.BIRCH_DOOR_ITEM", false);
+				config.addDefault("disallow.BIRCH_DOOR_ITEM", false);
 				config.addDefault("disallow.BIRCH_FENCE", false);
 				config.addDefault("disallow.BIRCH_FENCE_GATE", false);
 				config.addDefault("disallow.BIRCH_WOOD_STAIRS", false);

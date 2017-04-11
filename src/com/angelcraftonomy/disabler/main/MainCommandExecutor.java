@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 
 import com.angelcraftonomy.disabler.commands.AuthorCommand;
 import com.angelcraftonomy.disabler.commands.HelpCommand;
+import com.angelcraftonomy.disabler.commands.ReloadCommand;
 
 public class MainCommandExecutor implements CommandExecutor {
 	public MainDriver plugin;
@@ -41,9 +42,21 @@ public class MainCommandExecutor implements CommandExecutor {
 			}
 
 			/**************************************************************************************/
+			// Reload Command
+			if (args.length > 0 && args[0].toLowerCase().equals("reload")) {
+				ReloadCommand reload = new ReloadCommand(plugin, sender, command, lable, args);
+				if (sender.hasPermission(reload.getPermission())) {
+					reload.initialize();
+					reload.run();
+					reload.cleanup();
+					return true;
+				} else {
+					reload.sendNoPermMessage();
+				}
+			}
 
 			/**************************************************************************************/
 		}
-		return false;
+		return true;
 	}
 }
