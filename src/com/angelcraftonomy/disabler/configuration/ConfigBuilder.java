@@ -1,9 +1,18 @@
 package com.angelcraftonomy.disabler.configuration;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Logger;
 
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
+import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 
 import com.angelcraftonomy.disabler.main.MainDriver;
 
@@ -20,6 +29,8 @@ public class ConfigBuilder {
 	}
 
 	public void generateConfig() {
+		List<String> recipe = new ArrayList<>();
+
 		try {
 			if (!plugin.getDataFolder().exists()) {
 				plugin.getDataFolder().mkdirs();
@@ -28,454 +39,21 @@ public class ConfigBuilder {
 			if (!file.exists()) {
 				logger.info("Config.yml not found, creating!");
 
-				config.addDefault("disallow.ACACIA_DOOR", false);
-				config.addDefault("disallow.ACACIA_DOOR_ITEM", false);
-				config.addDefault("disallow.ACACIA_FENCE", false);
-				config.addDefault("disallow.ACACIA_FENCE_GATE", false);
-				config.addDefault("disallow.ACACIA_STAIRS", false);
-				config.addDefault("disallow.ACTIVATOR_RAIL", false);
-				config.addDefault("disallow.AIR", false);
-				config.addDefault("disallow.ANVIL", false);
-				config.addDefault("disallow.APPLE", false);
-				config.addDefault("disallow.ARMOR_STAND", false);
-				config.addDefault("disallow.ARROW", false);
-				config.addDefault("disallow.BAKED_POTATO", false);
-				config.addDefault("disallow.BANNER", false);
-				config.addDefault("disallow.BARRIER", false);
-				config.addDefault("disallow.BEACON", false);
-				config.addDefault("disallow.BED", false);
-				config.addDefault("disallow.BED_BLOCK", false);
-				config.addDefault("disallow.BEDROCK", false);
-				config.addDefault("disallow.BEETROOT", false);
-				config.addDefault("disallow.BEETROOT_BLOCK", false);
-				config.addDefault("disallow.BEETROOT_SEEDS", false);
-				config.addDefault("disallow.BEETROOT_SOUP", false);
-				config.addDefault("disallow.BIRCH_DOOR", false);
-				config.addDefault("disallow.BIRCH_DOOR_ITEM", false);
-				config.addDefault("disallow.BIRCH_FENCE", false);
-				config.addDefault("disallow.BIRCH_FENCE_GATE", false);
-				config.addDefault("disallow.BIRCH_WOOD_STAIRS", false);
-				config.addDefault("disallow.BLACK_SHULKER_BOX", false);
-				config.addDefault("disallow.BLAZE_POWDER", false);
-				config.addDefault("disallow.BLAZE_ROD", false);
-				config.addDefault("disallow.BLUE_SHULKER_BOX", false);
-				config.addDefault("disallow.BOAT", false);
-				config.addDefault("disallow.BOAT_ACACIA", false);
-				config.addDefault("disallow.BOAT_BIRCH", false);
-				config.addDefault("disallow.BOAT_DARK_OAK", false);
-				config.addDefault("disallow.BOAT_JUNGLE", false);
-				config.addDefault("disallow.BOAT_SPRUCE", false);
-				config.addDefault("disallow.BONE", false);
-				config.addDefault("disallow.BONE_BLOCK", false);
-				config.addDefault("disallow.BOOK", false);
-				config.addDefault("disallow.BOOK_AND_QUILL", false);
-				config.addDefault("disallow.BOOKSHELF", false);
-				config.addDefault("disallow.BOW", false);
-				config.addDefault("disallow.BOWL", false);
-				config.addDefault("disallow.BREAD", false);
-				config.addDefault("disallow.BREWING_STAND", false);
-				config.addDefault("disallow.BREWING_STAND_ITEM", false);
-				config.addDefault("disallow.BRICK", false);
-				config.addDefault("disallow.BRICK_STAIRS", false);
-				config.addDefault("disallow.BROWN_MUSHROOM", false);
-				config.addDefault("disallow.BROWN_SHULKER_BOX", false);
-				config.addDefault("disallow.BUCKET", false);
-				config.addDefault("disallow.BURNING_FURNACE", false);
-				config.addDefault("disallow.CACTUS", false);
-				config.addDefault("disallow.CAKE", false);
-				config.addDefault("disallow.CAKE_BLOCK", false);
-				config.addDefault("disallow.CARPET", false);
-				config.addDefault("disallow.CARROT", false);
-				config.addDefault("disallow.CARROT_ITEM", false);
-				config.addDefault("disallow.CARROT_STICK", false);
-				config.addDefault("disallow.CAULDRON", false);
-				config.addDefault("disallow.CAULDRON_ITEM", false);
-				config.addDefault("disallow.CHAINMAIL_BOOTS", false);
-				config.addDefault("disallow.CHAINMAIL_CHESTPLATE", false);
-				config.addDefault("disallow.CHAINMAIL_HELMET", false);
-				config.addDefault("disallow.CHAINMAIL_LEGGINGS", false);
-				config.addDefault("disallow.CHEST", false);
-				config.addDefault("disallow.CHORUS_FLOWER", false);
-				config.addDefault("disallow.CHORUS_FRUIT", false);
-				config.addDefault("disallow.CHORUS_FRUIT_POPPED", false);
-				config.addDefault("disallow.CHORUS_PLANT", false);
-				config.addDefault("disallow.CLAY", false);
-				config.addDefault("disallow.CLAY_BALL", false);
-				config.addDefault("disallow.CLAY_BRICK", false);
-				config.addDefault("disallow.COAL", false);
-				config.addDefault("disallow.COAL_BLOCK", false);
-				config.addDefault("disallow.COAL_ORE", false);
-				config.addDefault("disallow.COBBLE_WALL", false);
-				config.addDefault("disallow.COBBLESTONE", false);
-				config.addDefault("disallow.COBBLESTONE_STAIRS", false);
-				config.addDefault("disallow.COCOA", false);
-				config.addDefault("disallow.COMMAND", false);
-				config.addDefault("disallow.COMMAND_CHAIN", false);
-				config.addDefault("disallow.COMMAND_MINECART", false);
-				config.addDefault("disallow.COMMAND_REPEATING", false);
-				config.addDefault("disallow.COMPASS", false);
-				config.addDefault("disallow.COOKED_BEEF", false);
-				config.addDefault("disallow.COOKED_CHICKEN", false);
-				config.addDefault("disallow.COOKED_FISH", false);
-				config.addDefault("disallow.COOKED_MUTTON", false);
-				config.addDefault("disallow.COOKED_RABBIT", false);
-				config.addDefault("disallow.COOKIE", false);
-				config.addDefault("disallow.CROPS", false);
-				config.addDefault("disallow.CYAN_SHULKER_BOX", false);
-				config.addDefault("disallow.DARK_OAK_DOOR", false);
-				config.addDefault("disallow.DARK_OAK_DOOR_ITEM", false);
-				config.addDefault("disallow.DARK_OAK_FENCE", false);
-				config.addDefault("disallow.DARK_OAK_FENCE_GATE", false);
-				config.addDefault("disallow.DARK_OAK_STAIRS", false);
-				config.addDefault("disallow.DAYLIGHT_DETECTOR", false);
-				config.addDefault("disallow.DAYLIGHT_DETECTOR_INVERTED", false);
-				config.addDefault("disallow.DEAD_BUSH", false);
-				config.addDefault("disallow.DETECTOR_RAIL", false);
-				config.addDefault("disallow.DIAMOND", false);
-				config.addDefault("disallow.DIAMOND_AXE", false);
-				config.addDefault("disallow.DIAMOND_BARDING", false);
-				config.addDefault("disallow.DIAMOND_BLOCK", false);
-				config.addDefault("disallow.DIAMOND_BOOTS", false);
-				config.addDefault("disallow.DIAMOND_CHESTPLATE", false);
-				config.addDefault("disallow.DIAMOND_HELMET", false);
-				config.addDefault("disallow.DIAMOND_HOE", false);
-				config.addDefault("disallow.DIAMOND_LEGGINGS", false);
-				config.addDefault("disallow.DIAMOND_ORE", false);
-				config.addDefault("disallow.DIAMOND_PICKAXE", false);
-				config.addDefault("disallow.DIAMOND_SPADE", false);
-				config.addDefault("disallow.DIAMOND_SWORD", false);
-				config.addDefault("disallow.DIODE", false);
-				config.addDefault("disallow.DIODE_BLOCK_OFF", false);
-				config.addDefault("disallow.DIODE_BLOCK_ON", false);
-				config.addDefault("disallow.DIRT", false);
-				config.addDefault("disallow.DISPENSER", false);
-				config.addDefault("disallow.DOUBLE_PLANT", false);
-				config.addDefault("disallow.DOUBLE_STEP", false);
-				config.addDefault("disallow.DOUBLE_STONE_SLAB2", false);
-				config.addDefault("disallow.DRAGON_EGG", false);
-				config.addDefault("disallow.DRAGONS_BREATH", false);
-				config.addDefault("disallow.DROPPER", false);
-				config.addDefault("disallow.EGG", false);
-				config.addDefault("disallow.ELYTRA", false);
-				config.addDefault("disallow.EMERALD", false);
-				config.addDefault("disallow.EMERALD_BLOCK", false);
-				config.addDefault("disallow.EMERALD_ORE", false);
-				config.addDefault("disallow.EMPTY_MAP", false);
-				config.addDefault("disallow.ENCHANTED_BOOK", false);
-				config.addDefault("disallow.ENCHANTMENT_TABLE", false);
-				config.addDefault("disallow.END_BRICKS", false);
-				config.addDefault("disallow.END_CRYSTAL", false);
-				config.addDefault("disallow.END_GATEWAY", false);
-				config.addDefault("disallow.END_ROD", false);
-				config.addDefault("disallow.ENDER_CHEST", false);
-				config.addDefault("disallow.ENDER_PEARL", false);
-				config.addDefault("disallow.ENDER_PORTAL", false);
-				config.addDefault("disallow.ENDER_PORTAL_FRAME", false);
-				config.addDefault("disallow.ENDER_STONE", false);
-				config.addDefault("disallow.EXP_BOTTLE", false);
-				config.addDefault("disallow.EXPLOSIVE_MINECART", false);
-				config.addDefault("disallow.EYE_OF_ENDER", false);
-				config.addDefault("disallow.FEATHER", false);
-				config.addDefault("disallow.FENCE", false);
-				config.addDefault("disallow.FENCE_GATE", false);
-				config.addDefault("disallow.FERMENTED_SPIDER_EYE", false);
-				config.addDefault("disallow.FIRE", false);
-				config.addDefault("disallow.FIREBALL", false);
-				config.addDefault("disallow.FIREWORK", false);
-				config.addDefault("disallow.FIREWORK_CHARGE", false);
-				config.addDefault("disallow.FISHING_ROD", false);
-				config.addDefault("disallow.FLINT", false);
-				config.addDefault("disallow.FLINT_AND_STEEL", false);
-				config.addDefault("disallow.FLOWER_POT", false);
-				config.addDefault("disallow.FLOWER_POT_ITEM", false);
-				config.addDefault("disallow.FROSTED_ICE", false);
-				config.addDefault("disallow.FURNACE", false);
-				config.addDefault("disallow.GHAST_TEAR", false);
-				config.addDefault("disallow.GLASS", false);
-				config.addDefault("disallow.GLASS_BOTTLE", false);
-				config.addDefault("disallow.GLOWING_REDSTONE_ORE", false);
-				config.addDefault("disallow.GLOWSTONE", false);
-				config.addDefault("disallow.GLOWSTONE_DUST", false);
-				config.addDefault("disallow.GOLD_AXE", false);
-				config.addDefault("disallow.GOLD_BARDING", false);
-				config.addDefault("disallow.GOLD_BLOCK", false);
-				config.addDefault("disallow.GOLD_BOOTS", false);
-				config.addDefault("disallow.GOLD_CHESTPLATE", false);
-				config.addDefault("disallow.GOLD_HELMET", false);
-				config.addDefault("disallow.GOLD_HOE", false);
-				config.addDefault("disallow.GOLD_INGOT", false);
-				config.addDefault("disallow.GOLD_LEGGINGS", false);
-				config.addDefault("disallow.GOLD_NUGGET", false);
-				config.addDefault("disallow.GOLD_ORE", false);
-				config.addDefault("disallow.GOLD_PICKAXE", false);
-				config.addDefault("disallow.GOLD_PLATE", false);
-				config.addDefault("disallow.GOLD_RECORD", false);
-				config.addDefault("disallow.GOLD_SPADE", false);
-				config.addDefault("disallow.GOLD_SWORD", false);
-				config.addDefault("disallow.GOLDEN_APPLE", false);
-				config.addDefault("disallow.GOLDEN_CARROT", false);
-				config.addDefault("disallow.GRASS", false);
-				config.addDefault("disallow.GRASS_PATH", false);
-				config.addDefault("disallow.GRAVEL", false);
-				config.addDefault("disallow.GRAY_SHULKER_BOX", false);
-				config.addDefault("disallow.GREEN_RECORD", false);
-				config.addDefault("disallow.GREEN_SHULKER_BOX", false);
-				config.addDefault("disallow.GRILLED_PORK", false);
-				config.addDefault("disallow.HARD_CLAY", false);
-				config.addDefault("disallow.HAY_BLOCK", false);
-				config.addDefault("disallow.HOPPER", false);
-				config.addDefault("disallow.HOPPER_MINECART", false);
-				config.addDefault("disallow.HUGE_MUSHROOM_1", false);
-				config.addDefault("disallow.HUGE_MUSHROOM_2", false);
-				config.addDefault("disallow.ICE", false);
-				config.addDefault("disallow.INK_SACK", false);
-				config.addDefault("disallow.IRON_AXE", false);
-				config.addDefault("disallow.IRON_BARDING", false);
-				config.addDefault("disallow.IRON_BLOCK", false);
-				config.addDefault("disallow.IRON_BOOTS", false);
-				config.addDefault("disallow.IRON_CHESTPLATE", false);
-				config.addDefault("disallow.IRON_DOOR", false);
-				config.addDefault("disallow.IRON_DOOR_BLOCK", false);
-				config.addDefault("disallow.IRON_FENCE", false);
-				config.addDefault("disallow.IRON_HELMET", false);
-				config.addDefault("disallow.IRON_HOE", false);
-				config.addDefault("disallow.IRON_INGOT", false);
-				config.addDefault("disallow.IRON_LEGGINGS", false);
-				config.addDefault("disallow.IRON_NUGGET", false);
-				config.addDefault("disallow.IRON_ORE", false);
-				config.addDefault("disallow.IRON_PICKAXE", false);
-				config.addDefault("disallow.IRON_PLATE", false);
-				config.addDefault("disallow.IRON_SPADE", false);
-				config.addDefault("disallow.IRON_SWORD", false);
-				config.addDefault("disallow.IRON_TRAPDOOR", false);
-				config.addDefault("disallow.ITEM_FRAME", false);
-				config.addDefault("disallow.JACK_O_LANTERN", false);
-				config.addDefault("disallow.JUKEBOX", false);
-				config.addDefault("disallow.JUNGLE_DOOR", false);
-				config.addDefault("disallow.JUNGLE_DOOR_ITEM", false);
-				config.addDefault("disallow.JUNGLE_FENCE", false);
-				config.addDefault("disallow.JUNGLE_FENCE_GATE", false);
-				config.addDefault("disallow.JUNGLE_WOOD_STAIRS", false);
-				config.addDefault("disallow.LADDER", false);
-				config.addDefault("disallow.LAPIS_BLOCK", false);
-				config.addDefault("disallow.LAPIS_ORE", false);
-				config.addDefault("disallow.LAVA", false);
-				config.addDefault("disallow.LAVA_BUCKET", false);
-				config.addDefault("disallow.LEASH", false);
-				config.addDefault("disallow.LEATHER", false);
-				config.addDefault("disallow.LEATHER_BOOTS", false);
-				config.addDefault("disallow.LEATHER_CHESTPLATE", false);
-				config.addDefault("disallow.LEATHER_HELMET", false);
-				config.addDefault("disallow.LEATHER_LEGGINGS", false);
-				config.addDefault("disallow.LEAVES", false);
-				config.addDefault("disallow.LEAVES_2", false);
-				config.addDefault("disallow.LEVER", false);
-				config.addDefault("disallow.LIGHT_BLUE_SHULKER_BOX", false);
-				config.addDefault("disallow.LIME_SHULKER_BOX", false);
-				config.addDefault("disallow.LINGERING_POTION", false);
-				config.addDefault("disallow.LOG", false);
-				config.addDefault("disallow.LOG_2", false);
-				config.addDefault("disallow.LONG_GRASS", false);
-				config.addDefault("disallow.MAGENTA_SHULKER_BOX", false);
-				config.addDefault("disallow.MAGMA", false);
-				config.addDefault("disallow.MAGMA_CREAM", false);
-				config.addDefault("disallow.MAP", false);
-				config.addDefault("disallow.MELON", false);
-				config.addDefault("disallow.MELON_BLOCK", false);
-				config.addDefault("disallow.MELON_SEEDS", false);
-				config.addDefault("disallow.MELON_STEM", false);
-				config.addDefault("disallow.MILK_BUCKET", false);
-				config.addDefault("disallow.MINECART", false);
-				config.addDefault("disallow.MOB_SPAWNER", false);
-				config.addDefault("disallow.MONSTER_EGG", false);
-				config.addDefault("disallow.MONSTER_EGGS", false);
-				config.addDefault("disallow.MOSSY_COBBLESTONE", false);
-				config.addDefault("disallow.MUSHROOM_SOUP", false);
-				config.addDefault("disallow.MUTTON", false);
-				config.addDefault("disallow.MYCEL", false);
-				config.addDefault("disallow.NAME_TAG", false);
-				config.addDefault("disallow.NETHER_BRICK", false);
-				config.addDefault("disallow.NETHER_BRICK_ITEM", false);
-				config.addDefault("disallow.NETHER_BRICK_STAIRS", false);
-				config.addDefault("disallow.NETHER_FENCE", false);
-				config.addDefault("disallow.NETHER_STALK", false);
-				config.addDefault("disallow.NETHER_STAR", false);
-				config.addDefault("disallow.NETHER_WART_BLOCK", false);
-				config.addDefault("disallow.NETHER_WARTS", false);
-				config.addDefault("disallow.NETHERRACK", false);
-				config.addDefault("disallow.NOTE_BLOCK", false);
-				config.addDefault("disallow.OBSERVER", false);
-				config.addDefault("disallow.OBSIDIAN", false);
-				config.addDefault("disallow.ORANGE_SHULKER_BOX", false);
-				config.addDefault("disallow.PACKED_ICE", false);
-				config.addDefault("disallow.PAINTING", false);
-				config.addDefault("disallow.PAPER", false);
-				config.addDefault("disallow.PINK_SHULKER_BOX", false);
-				config.addDefault("disallow.PISTON_BASE", false);
-				config.addDefault("disallow.PISTON_EXTENSION", false);
-				config.addDefault("disallow.PISTON_MOVING_PIECE", false);
-				config.addDefault("disallow.PISTON_STICKY_BASE", false);
-				config.addDefault("disallow.POISONOUS_POTATO", false);
-				config.addDefault("disallow.PORK", false);
-				config.addDefault("disallow.PORTAL", false);
-				config.addDefault("disallow.POTATO", false);
-				config.addDefault("disallow.POTATO_ITEM", false);
-				config.addDefault("disallow.POTION", false);
-				config.addDefault("disallow.POWERED_MINECART", false);
-				config.addDefault("disallow.POWERED_RAIL", false);
-				config.addDefault("disallow.PRISMARINE", false);
-				config.addDefault("disallow.PRISMARINE_CRYSTALS", false);
-				config.addDefault("disallow.PRISMARINE_SHARD", false);
-				config.addDefault("disallow.PUMPKIN", false);
-				config.addDefault("disallow.PUMPKIN_PIE", false);
-				config.addDefault("disallow.PUMPKIN_SEEDS", false);
-				config.addDefault("disallow.PUMPKIN_STEM", false);
-				config.addDefault("disallow.PURPLE_SHULKER_BOX", false);
-				config.addDefault("disallow.PURPUR_BLOCK", false);
-				config.addDefault("disallow.PURPUR_DOUBLE_SLAB", false);
-				config.addDefault("disallow.PURPUR_PILLAR", false);
-				config.addDefault("disallow.PURPUR_SLAB", false);
-				config.addDefault("disallow.PURPUR_STAIRS", false);
-				config.addDefault("disallow.QUARTZ", false);
-				config.addDefault("disallow.QUARTZ_BLOCK", false);
-				config.addDefault("disallow.QUARTZ_ORE", false);
-				config.addDefault("disallow.QUARTZ_STAIRS", false);
-				config.addDefault("disallow.RABBIT", false);
-				config.addDefault("disallow.RABBIT_FOOT", false);
-				config.addDefault("disallow.RABBIT_HIDE", false);
-				config.addDefault("disallow.RABBIT_STEW", false);
-				config.addDefault("disallow.RAILS", false);
-				config.addDefault("disallow.RAW_BEEF", false);
-				config.addDefault("disallow.RAW_CHICKEN", false);
-				config.addDefault("disallow.RAW_FISH", false);
-				config.addDefault("disallow.RECORD_10", false);
-				config.addDefault("disallow.RECORD_11", false);
-				config.addDefault("disallow.RECORD_12", false);
-				config.addDefault("disallow.RECORD_3", false);
-				config.addDefault("disallow.RECORD_4", false);
-				config.addDefault("disallow.RECORD_5", false);
-				config.addDefault("disallow.RECORD_6", false);
-				config.addDefault("disallow.RECORD_7", false);
-				config.addDefault("disallow.RECORD_8", false);
-				config.addDefault("disallow.RECORD_9", false);
-				config.addDefault("disallow.RED_MUSHROOM", false);
-				config.addDefault("disallow.RED_NETHER_BRICK", false);
-				config.addDefault("disallow.RED_ROSE", false);
-				config.addDefault("disallow.RED_SANDSTONE", false);
-				config.addDefault("disallow.RED_SANDSTONE_STAIRS", false);
-				config.addDefault("disallow.RED_SHULKER_BOX", false);
-				config.addDefault("disallow.REDSTONE", false);
-				config.addDefault("disallow.REDSTONE_BLOCK", false);
-				config.addDefault("disallow.REDSTONE_COMPARATOR", false);
-				config.addDefault("disallow.REDSTONE_COMPARATOR_OFF", false);
-				config.addDefault("disallow.REDSTONE_COMPARATOR_ON", false);
-				config.addDefault("disallow.REDSTONE_LAMP_OFF", false);
-				config.addDefault("disallow.REDSTONE_LAMP_ON", false);
-				config.addDefault("disallow.REDSTONE_ORE", false);
-				config.addDefault("disallow.REDSTONE_TORCH_OFF", false);
-				config.addDefault("disallow.REDSTONE_TORCH_ON", false);
-				config.addDefault("disallow.REDSTONE_WIRE", false);
-				config.addDefault("disallow.ROTTEN_FLESH", false);
-				config.addDefault("disallow.SADDLE", false);
-				config.addDefault("disallow.SAND", false);
-				config.addDefault("disallow.SANDSTONE", false);
-				config.addDefault("disallow.SANDSTONE_STAIRS", false);
-				config.addDefault("disallow.SAPLING", false);
-				config.addDefault("disallow.SEA_LANTERN", false);
-				config.addDefault("disallow.SEEDS", false);
-				config.addDefault("disallow.SHEARS", false);
-				config.addDefault("disallow.SHIELD", false);
-				config.addDefault("disallow.SHULKER_SHELL", false);
-				config.addDefault("disallow.SIGN", false);
-				config.addDefault("disallow.SIGN_POST", false);
-				config.addDefault("disallow.SILVER_SHULKER_BOX", false);
-				config.addDefault("disallow.SKULL", false);
-				config.addDefault("disallow.SKULL_ITEM", false);
-				config.addDefault("disallow.SLIME_BALL", false);
-				config.addDefault("disallow.SLIME_BLOCK", false);
-				config.addDefault("disallow.SMOOTH_BRICK", false);
-				config.addDefault("disallow.SMOOTH_STAIRS", false);
-				config.addDefault("disallow.SNOW", false);
-				config.addDefault("disallow.SNOW_BALL", false);
-				config.addDefault("disallow.SNOW_BLOCK", false);
-				config.addDefault("disallow.SOIL", false);
-				config.addDefault("disallow.SOUL_SAND", false);
-				config.addDefault("disallow.SPECKLED_MELON", false);
-				config.addDefault("disallow.SPECTRAL_ARROW", false);
-				config.addDefault("disallow.SPIDER_EYE", false);
-				config.addDefault("disallow.SPLASH_POTION", false);
-				config.addDefault("disallow.SPONGE", false);
-				config.addDefault("disallow.SPRUCE_DOOR", false);
-				config.addDefault("disallow.SPRUCE_DOOR_ITEM", false);
-				config.addDefault("disallow.SPRUCE_FENCE", false);
-				config.addDefault("disallow.SPRUCE_FENCE_GATE", false);
-				config.addDefault("disallow.SPRUCE_WOOD_STAIRS", false);
-				config.addDefault("disallow.STAINED_CLAY", false);
-				config.addDefault("disallow.STAINED_GLASS", false);
-				config.addDefault("disallow.STAINED_GLASS_PANE", false);
-				config.addDefault("disallow.STANDING_BANNER", false);
-				config.addDefault("disallow.STATIONARY_LAVA", false);
-				config.addDefault("disallow.STATIONARY_WATER", false);
-				config.addDefault("disallow.STEP", false);
-				config.addDefault("disallow.STICK", false);
-				config.addDefault("disallow.STONE", false);
-				config.addDefault("disallow.STONE_AXE", false);
-				config.addDefault("disallow.STONE_BUTTON", false);
-				config.addDefault("disallow.STONE_HOE", false);
-				config.addDefault("disallow.STONE_PICKAXE", false);
-				config.addDefault("disallow.STONE_PLATE", false);
-				config.addDefault("disallow.STONE_SLAB2", false);
-				config.addDefault("disallow.STONE_SPADE", false);
-				config.addDefault("disallow.STONE_SWORD", false);
-				config.addDefault("disallow.STORAGE_MINECART", false);
-				config.addDefault("disallow.STRING", false);
-				config.addDefault("disallow.STRUCTURE_BLOCK", false);
-				config.addDefault("disallow.STRUCTURE_VOID", false);
-				config.addDefault("disallow.SUGAR", false);
-				config.addDefault("disallow.SUGAR_CANE", false);
-				config.addDefault("disallow.SUGAR_CANE_BLOCK", false);
-				config.addDefault("disallow.SULPHUR", false);
-				config.addDefault("disallow.THIN_GLASS", false);
-				config.addDefault("disallow.TIPPED_ARROW", false);
-				config.addDefault("disallow.TNT", false);
-				config.addDefault("disallow.TORCH", false);
-				config.addDefault("disallow.TOTEM", false);
-				config.addDefault("disallow.TRAP_DOOR", false);
-				config.addDefault("disallow.TRAPPED_CHEST", false);
-				config.addDefault("disallow.TRIPWIRE", false);
-				config.addDefault("disallow.TRIPWIRE_HOOK", false);
-				config.addDefault("disallow.VINE", false);
-				config.addDefault("disallow.WALL_BANNER", false);
-				config.addDefault("disallow.WALL_SIGN", false);
-				config.addDefault("disallow.WATCH", false);
-				config.addDefault("disallow.WATER", false);
-				config.addDefault("disallow.WATER_BUCKET", false);
-				config.addDefault("disallow.WATER_LILY", false);
-				config.addDefault("disallow.WEB", false);
-				config.addDefault("disallow.WHEAT", false);
-				config.addDefault("disallow.WHITE_SHULKER_BOX", false);
-				config.addDefault("disallow.WOOD", false);
-				config.addDefault("disallow.WOOD_AXE", false);
-				config.addDefault("disallow.WOOD_BUTTON", false);
-				config.addDefault("disallow.WOOD_DOOR", false);
-				config.addDefault("disallow.WOOD_DOUBLE_STEP", false);
-				config.addDefault("disallow.WOOD_HOE", false);
-				config.addDefault("disallow.WOOD_PICKAXE", false);
-				config.addDefault("disallow.WOOD_PLATE", false);
-				config.addDefault("disallow.WOOD_SPADE", false);
-				config.addDefault("disallow.WOOD_STAIRS", false);
-				config.addDefault("disallow.WOOD_STEP", false);
-				config.addDefault("disallow.WOOD_SWORD", false);
-				config.addDefault("disallow.WOODEN_DOOR", false);
-				config.addDefault("disallow.WOOL", false);
-				config.addDefault("disallow.WORKBENCH", false);
-				config.addDefault("disallow.WRITTEN_BOOK", false);
-				config.addDefault("disallow.YELLOW_FLOWER", false);
-				config.addDefault("disallow.YELLOW_SHULKER_BOX", false);
+				for (Material material : Material.values()) {
+					recipe = new ArrayList<>();
+					recipe.addAll(
+							Arrays.asList("NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"));
+					config.addDefault("materials." + material + ".craftable", true);
+					config.addDefault("materials." + material + ".customrecipe", false);
+					config.addDefault("materials." + material + ".shapedrecipe", false);
+					config.addDefault("materials." + material + ".recipe.list", recipe);
+				}
+
 				config.options().copyDefaults(true);
 				plugin.saveConfig();
 			} else {
 				logger.info("Config.yml found, loading!");
+				this.loadConfig();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -483,4 +61,80 @@ public class ConfigBuilder {
 		}
 	}
 
+	private void loadConfig() {
+		boolean craftable;
+		boolean customRecipe;
+		boolean shapedRecipe;
+		Iterator<Recipe> recipes;
+		Recipe recipe;
+		List list;
+
+		for (Material material : Material.values()) {
+			craftable = config.getBoolean("materials." + material + ".craftable");
+			customRecipe = config.getBoolean("materials." + material + ".customrecipe");
+			shapedRecipe = config.getBoolean("materials." + material + ".shapedrecipe");
+
+			if (!craftable) {
+				recipes = plugin.getServer().recipeIterator();
+				while (recipes.hasNext()) {
+					recipe = recipes.next();
+					if (recipe != null && recipe.getResult().getType() == material) {
+						recipes.remove();
+					}
+				}
+
+				logger.info("Disabled crafting of: " + material.toString());
+			} else {
+				if (customRecipe) {
+					if (shapedRecipe) {
+						String componets = "";
+						list = config.getList("materials." + material + ".recipe.list");
+
+						ItemStack item = new ItemStack(material, 1);
+
+						ShapedRecipe newRecipe = new ShapedRecipe(item);
+
+						ArrayList<Character> symbols = new ArrayList<>();
+						symbols.addAll(Arrays.asList('!', '@', '#', '$', '%', '^', '&', '*', '?'));
+
+						for (int i = 0; i < 9; i++) {
+							if (!list.get(i).toString().equals("NONE")) {
+								componets = componets + symbols.get(i);
+							} else {
+								componets = componets.concat(" ");
+							}
+						}
+
+						newRecipe.shape(componets.substring(0, 3), componets.substring(3, 6), componets.substring(6));
+
+						for (int i = 0; i < 9; i++) {
+							if (!list.get(i).toString().equals("NONE")) {
+								newRecipe.setIngredient(symbols.get(i), Material.getMaterial(list.get(i).toString()));
+							}
+						}
+
+						plugin.getServer().addRecipe(newRecipe);
+						logger.info("Adding custom shaped recipe for: " + material.toString());
+
+					} else if (!shapedRecipe) {
+						ShapelessRecipe newRecipe;
+						list = config.getList("materials." + material + ".recipe.list");
+
+						ItemStack item = new ItemStack(material, 1);
+
+						newRecipe = new ShapelessRecipe(item);
+
+						for (int i = 0; i < 9; i++) {
+							if (!list.get(i).toString().equals("NONE")) {
+								newRecipe.addIngredient(1, Material.getMaterial(list.get(i).toString()));
+							}
+						}
+
+						plugin.getServer().addRecipe(newRecipe);
+						logger.info("Adding custom shapless recipe for: " + material.toString());
+					}
+				}
+			}
+		}
+	}
 }

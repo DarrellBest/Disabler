@@ -20,12 +20,13 @@ public class MainDriver extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		System.out.println("[Disabler] Enabling Disabler v1.0");
+
 		logger = this.getLogger();
 		plugin = this;
 		config = this.getConfig();
 		builder = new ConfigBuilder(this);
 
+		logger.info("[Disabler] Enabling Disabler v1.0");
 		builder.generateConfig();
 
 		myCommands = new MainCommandExecutor(this);
@@ -40,7 +41,7 @@ public class MainDriver extends JavaPlugin {
 	// Fired when plugin is disabled
 	@Override
 	public void onDisable() {
-		System.out.println("[Disabler] Disabling Disabler v1.0");
+		logger.info("[Disabler] Disabling Disabler v1.0");
 		logger.info("--- END OF LINE ---");
 	}
 
